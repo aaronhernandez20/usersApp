@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IonHeader,
@@ -34,7 +34,10 @@ export class UsersPage implements OnInit {
   users: User[] = [];
   loading = false;
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   async ngOnInit() {
     await this.loadUsers();
@@ -48,6 +51,7 @@ export class UsersPage implements OnInit {
       console.error('Error:', error);
     } finally {
       this.loading = false;
+      this.cdr.detectChanges();
     }
   }
 }
