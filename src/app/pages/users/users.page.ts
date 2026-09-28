@@ -15,7 +15,7 @@ import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-users',
-  standalone: true,
+  standalone: true, 
   imports: [
     CommonModule,
     IonHeader,
